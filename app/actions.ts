@@ -53,7 +53,7 @@ export async function getProjects(): Promise<Project[]> {
   await checkAuth()
   
   try {
-    const supabase = getSupabaseClient()
+    const supabase = await createAuthClient()
 
     const { data, error } = await supabase
       .from('projects')
@@ -151,7 +151,7 @@ export async function deleteProject(projectId: string) {
       }
     }
 
-    const supabase = getSupabaseClient()
+    const supabase = await createAuthClient()
 
     const { error } = await supabase
       .from('projects')
