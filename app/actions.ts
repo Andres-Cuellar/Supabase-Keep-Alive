@@ -107,7 +107,7 @@ export async function addProject(formData: FormData) {
       }
     }
 
-    const supabase = getSupabaseClient()
+    const supabase = await createAuthClient()
 
     const { error } = await supabase
       .from('projects')
